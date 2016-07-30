@@ -29,21 +29,21 @@ public class Bitmap {
 
 	public void draw(int xPos, int yPos){
 		final double rotRad = Math.toRadians(rotation);
-		((Graphics2D)Global.graphics).rotate(rotRad, xPos + ((width * scale) / 2), yPos + ((height * scale) / 2));
+		((Graphics2D)Global._GRAPHICS).rotate(rotRad, xPos + ((width * scale) / 2), yPos + ((height * scale) / 2));
 		for(int y = 0; y < height; y++){
 			for(int x = 0; x < width; x++){
 				final int tmpCol = pixels[(y * width) + x];
 				if(tmpCol != 0){
-					Global.graphics.setColor(new Color(tmpCol, true));
+					Global._GRAPHICS.setColor(new Color(tmpCol, true));
 					for(int dy = 0; dy <= scale-1; dy++){
 						for(int dx = 0; dx <= scale-1; dx++){
-							Global.graphics.drawLine(xPos + x + dx, yPos + y + dy, xPos + x + dx, yPos + y + dy);
+							Global._GRAPHICS.drawLine(xPos + x + dx, yPos + y + dy, xPos + x + dx, yPos + y + dy);
 						}
 					}
 				}
 			}
 		}
-		((Graphics2D)Global.graphics).setTransform(new AffineTransform());
+		((Graphics2D)Global._GRAPHICS).setTransform(new AffineTransform());
 	}
 
 	public void rotate(int degrees){

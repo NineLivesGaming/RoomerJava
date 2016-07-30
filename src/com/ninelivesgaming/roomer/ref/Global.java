@@ -12,9 +12,13 @@ import com.ninelivesgaming.roomer.handlers.InputHandler;
 
 public class Global {
 
-	public static JFrame frame;
-	public static BufferedImage buffer;
-	public static Graphics graphics;
+	public static JFrame _FRAME;
+	public static BufferedImage _BUFFER;
+	public static Graphics _GRAPHICS;
+	
+	public static long lastFrameTime = System.currentTimeMillis();
+	public static long lastUpdateTime = System.currentTimeMillis();
+	public static boolean drawFrame = false;
 	
 	public static InputHandler inputHandler = new InputHandler();
 	
@@ -22,17 +26,17 @@ public class Global {
 	
 	public static void init(){
 		try{
-			frame = new JFrame(Settings._NAME);
-			frame.getContentPane().setPreferredSize(new Dimension(Settings._WIDTH, Settings._HEIGHT));
-			frame.pack();
+			_FRAME = new JFrame(Settings._NAME);
+			_FRAME.getContentPane().setPreferredSize(new Dimension(Settings._WIDTH, Settings._HEIGHT));
+			_FRAME.pack();
 			
-			buffer = new BufferedImage(Settings._WIDTH, Settings._HEIGHT,BufferedImage.TYPE_INT_RGB);
-			graphics = buffer.createGraphics();
+			_BUFFER = new BufferedImage(Settings._WIDTH, Settings._HEIGHT,BufferedImage.TYPE_INT_RGB);
+			_GRAPHICS = _BUFFER.createGraphics();
 			
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			_FRAME.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			URL iconURL = Global.class.getResource("/res/icon.png");
-			frame.setIconImage(ImageIO.read(iconURL));
-			frame.setVisible(true);
+			_FRAME.setIconImage(ImageIO.read(iconURL));
+			_FRAME.setVisible(true);
 		}catch(Exception e){
 			System.out.println("nope");
 		}
