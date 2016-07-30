@@ -17,6 +17,10 @@ public class Bitmap {
 	double rotation = 0;
 	double scale = 1;
 
+	/**
+	 * Loads specified image file as the bitmaps data. Uses Class.getResource()
+	 * @param filePath The image to be loaded
+	 */
 	public Bitmap(String filePath){
 		try{
 			final BufferedImage img = ImageIO.read(this.getClass().getResource(filePath));
@@ -27,6 +31,11 @@ public class Bitmap {
 		}
 	}
 
+	/**
+	 * Draws the image to the graphics buffer
+	 * @param xPos x position
+	 * @param yPos y position
+	 */
 	public void draw(int xPos, int yPos){
 		final double rotRad = Math.toRadians(rotation);
 		((Graphics2D)Global._GRAPHICS).rotate(rotRad, xPos + ((width * scale) / 2), yPos + ((height * scale) / 2));
@@ -46,10 +55,18 @@ public class Bitmap {
 		((Graphics2D)Global._GRAPHICS).setTransform(new AffineTransform());
 	}
 
+	/**
+	 * Adds to the current rotation of the image
+	 * @param degrees Angle to add, in degrees
+	 */
 	public void rotate(int degrees){
 		rotation += degrees;
 	}
 
+	/**
+	 * Redefines the Bitmap to a new set of pixels
+	 * @param img BufferedImage to be used as new data
+	 */
 	public void setPixels(BufferedImage img){
 		width = img.getWidth();
 		height = img.getHeight();
@@ -65,6 +82,10 @@ public class Bitmap {
 		}
 	}
 
+	/**
+	 * Sets the angle of rotation
+	 * @param newRot Rotation to be set to, in degrees
+	 */
 	public void setRotation(int newRot){
 		rotation = newRot;
 	}

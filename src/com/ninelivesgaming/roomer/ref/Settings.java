@@ -9,6 +9,9 @@ public class Settings {
 
 	public static String _NAME = "Roomer";
 
+	/**
+	 * Reads info from configuration files and sets settings accordingly
+	 */
 	public static void init(){
 		Scanner s = new Scanner("config.ini");
 		while(s.hasNext()){
