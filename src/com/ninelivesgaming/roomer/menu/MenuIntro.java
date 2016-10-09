@@ -2,7 +2,7 @@ package com.ninelivesgaming.roomer.menu;
 
 import com.ninelivesgaming.roomer.ref.Global;
 
-public class MenuIntro implements IMenu{
+public class MenuIntro extends CommonMenu{
 
 	@Override
 	public void load() {
